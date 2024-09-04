@@ -1,0 +1,595 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "12/01/2023 23:38:51"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    ALU3block
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module ALU3block_vlg_sample_tst(
+	A,
+	B,
+	clk,
+	data_in,
+	En,
+	reset,
+	ResetA,
+	ResetB,
+	sampler_tx
+);
+input [7:0] A;
+input [7:0] B;
+input  clk;
+input  data_in;
+input  En;
+input  reset;
+input  ResetA;
+input  ResetB;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(A or B or clk or data_in or En or reset or ResetA or ResetB)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module ALU3block_vlg_check_tst (
+	student_id,
+	yesorno,
+	sampler_rx
+);
+input [0:6] student_id;
+input [0:6] yesorno;
+input sampler_rx;
+
+reg [0:6] student_id_expected;
+reg [0:6] yesorno_expected;
+
+reg [0:6] student_id_prev;
+reg [0:6] yesorno_prev;
+
+reg [0:6] student_id_expected_prev;
+reg [0:6] yesorno_expected_prev;
+
+reg [0:6] last_student_id_exp;
+reg [0:6] last_yesorno_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:2] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 2'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	student_id_prev = student_id;
+	yesorno_prev = yesorno;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	student_id_expected_prev = student_id_expected;
+	yesorno_expected_prev = yesorno_expected;
+end
+
+
+// expected student_id[ 6 ]
+initial
+begin
+	student_id_expected[6] = 1'bX;
+	student_id_expected[6] = #999000 1'b0;
+end 
+// expected student_id[ 5 ]
+initial
+begin
+	student_id_expected[5] = 1'bX;
+	student_id_expected[5] = #999000 1'b0;
+end 
+// expected student_id[ 4 ]
+initial
+begin
+	student_id_expected[4] = 1'bX;
+	student_id_expected[4] = #999000 1'b0;
+end 
+// expected student_id[ 3 ]
+initial
+begin
+	student_id_expected[3] = 1'bX;
+	student_id_expected[3] = #999000 1'b0;
+end 
+// expected student_id[ 2 ]
+initial
+begin
+	student_id_expected[2] = 1'bX;
+	student_id_expected[2] = #999000 1'b0;
+end 
+// expected student_id[ 1 ]
+initial
+begin
+	student_id_expected[1] = 1'bX;
+	student_id_expected[1] = #999000 1'b0;
+end 
+// expected student_id[ 0 ]
+initial
+begin
+	student_id_expected[0] = 1'bX;
+	student_id_expected[0] = #999000 1'b0;
+end 
+// expected yesorno[ 6 ]
+initial
+begin
+	yesorno_expected[6] = 1'bX;
+	yesorno_expected[6] = #999000 1'b0;
+end 
+// expected yesorno[ 5 ]
+initial
+begin
+	yesorno_expected[5] = 1'bX;
+	yesorno_expected[5] = #999000 1'b0;
+end 
+// expected yesorno[ 4 ]
+initial
+begin
+	yesorno_expected[4] = 1'bX;
+	yesorno_expected[4] = #999000 1'b0;
+end 
+// expected yesorno[ 3 ]
+initial
+begin
+	yesorno_expected[3] = 1'bX;
+	yesorno_expected[3] = #999000 1'b0;
+end 
+// expected yesorno[ 2 ]
+initial
+begin
+	yesorno_expected[2] = 1'bX;
+	yesorno_expected[2] = #999000 1'b0;
+end 
+// expected yesorno[ 1 ]
+initial
+begin
+	yesorno_expected[1] = 1'bX;
+	yesorno_expected[1] = #999000 1'b0;
+end 
+// expected yesorno[ 0 ]
+initial
+begin
+	yesorno_expected[0] = 1'bX;
+	yesorno_expected[0] = #999000 1'b0;
+end 
+// generate trigger
+always @(student_id_expected or student_id or yesorno_expected or yesorno)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected student_id = %b | expected yesorno = %b | ",student_id_expected_prev,yesorno_expected_prev);
+	$display("| real student_id = %b | real yesorno = %b | ",student_id_prev,yesorno_prev);
+`endif
+	if (
+		( student_id_expected_prev[0] !== 1'bx ) && ( student_id_prev[0] !== student_id_expected_prev[0] )
+		&& ((student_id_expected_prev[0] !== last_student_id_exp[0]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port student_id[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", student_id_expected_prev);
+		$display ("     Real value = %b", student_id_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_student_id_exp[0] = student_id_expected_prev[0];
+	end
+	if (
+		( student_id_expected_prev[1] !== 1'bx ) && ( student_id_prev[1] !== student_id_expected_prev[1] )
+		&& ((student_id_expected_prev[1] !== last_student_id_exp[1]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port student_id[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", student_id_expected_prev);
+		$display ("     Real value = %b", student_id_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_student_id_exp[1] = student_id_expected_prev[1];
+	end
+	if (
+		( student_id_expected_prev[2] !== 1'bx ) && ( student_id_prev[2] !== student_id_expected_prev[2] )
+		&& ((student_id_expected_prev[2] !== last_student_id_exp[2]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port student_id[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", student_id_expected_prev);
+		$display ("     Real value = %b", student_id_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_student_id_exp[2] = student_id_expected_prev[2];
+	end
+	if (
+		( student_id_expected_prev[3] !== 1'bx ) && ( student_id_prev[3] !== student_id_expected_prev[3] )
+		&& ((student_id_expected_prev[3] !== last_student_id_exp[3]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port student_id[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", student_id_expected_prev);
+		$display ("     Real value = %b", student_id_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_student_id_exp[3] = student_id_expected_prev[3];
+	end
+	if (
+		( student_id_expected_prev[4] !== 1'bx ) && ( student_id_prev[4] !== student_id_expected_prev[4] )
+		&& ((student_id_expected_prev[4] !== last_student_id_exp[4]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port student_id[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", student_id_expected_prev);
+		$display ("     Real value = %b", student_id_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_student_id_exp[4] = student_id_expected_prev[4];
+	end
+	if (
+		( student_id_expected_prev[5] !== 1'bx ) && ( student_id_prev[5] !== student_id_expected_prev[5] )
+		&& ((student_id_expected_prev[5] !== last_student_id_exp[5]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port student_id[5] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", student_id_expected_prev);
+		$display ("     Real value = %b", student_id_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_student_id_exp[5] = student_id_expected_prev[5];
+	end
+	if (
+		( student_id_expected_prev[6] !== 1'bx ) && ( student_id_prev[6] !== student_id_expected_prev[6] )
+		&& ((student_id_expected_prev[6] !== last_student_id_exp[6]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port student_id[6] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", student_id_expected_prev);
+		$display ("     Real value = %b", student_id_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_student_id_exp[6] = student_id_expected_prev[6];
+	end
+	if (
+		( yesorno_expected_prev[0] !== 1'bx ) && ( yesorno_prev[0] !== yesorno_expected_prev[0] )
+		&& ((yesorno_expected_prev[0] !== last_yesorno_exp[0]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port yesorno[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", yesorno_expected_prev);
+		$display ("     Real value = %b", yesorno_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_yesorno_exp[0] = yesorno_expected_prev[0];
+	end
+	if (
+		( yesorno_expected_prev[1] !== 1'bx ) && ( yesorno_prev[1] !== yesorno_expected_prev[1] )
+		&& ((yesorno_expected_prev[1] !== last_yesorno_exp[1]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port yesorno[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", yesorno_expected_prev);
+		$display ("     Real value = %b", yesorno_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_yesorno_exp[1] = yesorno_expected_prev[1];
+	end
+	if (
+		( yesorno_expected_prev[2] !== 1'bx ) && ( yesorno_prev[2] !== yesorno_expected_prev[2] )
+		&& ((yesorno_expected_prev[2] !== last_yesorno_exp[2]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port yesorno[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", yesorno_expected_prev);
+		$display ("     Real value = %b", yesorno_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_yesorno_exp[2] = yesorno_expected_prev[2];
+	end
+	if (
+		( yesorno_expected_prev[3] !== 1'bx ) && ( yesorno_prev[3] !== yesorno_expected_prev[3] )
+		&& ((yesorno_expected_prev[3] !== last_yesorno_exp[3]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port yesorno[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", yesorno_expected_prev);
+		$display ("     Real value = %b", yesorno_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_yesorno_exp[3] = yesorno_expected_prev[3];
+	end
+	if (
+		( yesorno_expected_prev[4] !== 1'bx ) && ( yesorno_prev[4] !== yesorno_expected_prev[4] )
+		&& ((yesorno_expected_prev[4] !== last_yesorno_exp[4]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port yesorno[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", yesorno_expected_prev);
+		$display ("     Real value = %b", yesorno_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_yesorno_exp[4] = yesorno_expected_prev[4];
+	end
+	if (
+		( yesorno_expected_prev[5] !== 1'bx ) && ( yesorno_prev[5] !== yesorno_expected_prev[5] )
+		&& ((yesorno_expected_prev[5] !== last_yesorno_exp[5]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port yesorno[5] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", yesorno_expected_prev);
+		$display ("     Real value = %b", yesorno_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_yesorno_exp[5] = yesorno_expected_prev[5];
+	end
+	if (
+		( yesorno_expected_prev[6] !== 1'bx ) && ( yesorno_prev[6] !== yesorno_expected_prev[6] )
+		&& ((yesorno_expected_prev[6] !== last_yesorno_exp[6]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port yesorno[6] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", yesorno_expected_prev);
+		$display ("     Real value = %b", yesorno_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_yesorno_exp[6] = yesorno_expected_prev[6];
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1040000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module ALU3block_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg [7:0] A;
+reg [7:0] B;
+reg clk;
+reg data_in;
+reg En;
+reg reset;
+reg ResetA;
+reg ResetB;
+// wires                                               
+wire [0:6] student_id;
+wire [0:6] yesorno;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+ALU3block i1 (
+// port map - connection between master ports and signals/registers   
+	.A(A),
+	.B(B),
+	.clk(clk),
+	.data_in(data_in),
+	.En(En),
+	.reset(reset),
+	.ResetA(ResetA),
+	.ResetB(ResetB),
+	.student_id(student_id),
+	.yesorno(yesorno)
+);
+// A[ 7 ]
+initial
+begin
+	A[7] = 1'b0;
+end 
+// A[ 6 ]
+initial
+begin
+	A[6] = 1'b0;
+end 
+// A[ 5 ]
+initial
+begin
+	A[5] = 1'b1;
+end 
+// A[ 4 ]
+initial
+begin
+	A[4] = 1'b0;
+end 
+// A[ 3 ]
+initial
+begin
+	A[3] = 1'b1;
+end 
+// A[ 2 ]
+initial
+begin
+	A[2] = 1'b1;
+end 
+// A[ 1 ]
+initial
+begin
+	A[1] = 1'b1;
+end 
+// A[ 0 ]
+initial
+begin
+	A[0] = 1'b1;
+end 
+// B[ 7 ]
+initial
+begin
+	B[7] = 1'b0;
+end 
+// B[ 6 ]
+initial
+begin
+	B[6] = 1'b0;
+end 
+// B[ 5 ]
+initial
+begin
+	B[5] = 1'b0;
+end 
+// B[ 4 ]
+initial
+begin
+	B[4] = 1'b0;
+end 
+// B[ 3 ]
+initial
+begin
+	B[3] = 1'b1;
+end 
+// B[ 2 ]
+initial
+begin
+	B[2] = 1'b0;
+end 
+// B[ 1 ]
+initial
+begin
+	B[1] = 1'b0;
+end 
+// B[ 0 ]
+initial
+begin
+	B[0] = 1'b0;
+end 
+
+// clk
+initial
+begin
+	clk = 1'b1;
+	# 60000;
+	repeat(8)
+	begin
+		clk = 1'b0;
+		clk = #60000 1'b1;
+		# 60000;
+	end
+	clk = 1'b0;
+end 
+
+// data_in
+initial
+begin
+	data_in = 1'b1;
+end 
+
+// En
+initial
+begin
+	En = 1'b1;
+end 
+
+// reset
+initial
+begin
+	reset = 1'b0;
+end 
+
+// ResetA
+initial
+begin
+	ResetA = 1'b1;
+end 
+
+// ResetB
+initial
+begin
+	ResetB = 1'b1;
+end 
+
+ALU3block_vlg_sample_tst tb_sample (
+	.A(A),
+	.B(B),
+	.clk(clk),
+	.data_in(data_in),
+	.En(En),
+	.reset(reset),
+	.ResetA(ResetA),
+	.ResetB(ResetB),
+	.sampler_tx(sampler)
+);
+
+ALU3block_vlg_check_tst tb_out(
+	.student_id(student_id),
+	.yesorno(yesorno),
+	.sampler_rx(sampler)
+);
+endmodule
+
